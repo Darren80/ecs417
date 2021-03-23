@@ -1,0 +1,107 @@
+body {
+    
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+#container {
+    width: 90%;
+    margin: auto;
+}
+
+#backgroundImage {
+    background: url(img/pexels-stephan-seeber-1054218.jpg) no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    z-index: -1;
+}
+
+/* Portfolio picture and text styling */
+
+#portfolioLanding {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+
+    display: flex;
+}
+
+#portfolioLanding section .title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#portfolioLanding section p {
+    
+    margin-right: 10%;
+}
+
+#portfolioPicture {
+    text-align: center;
+    flex: 1 1;
+}
+
+#portfolioPicture figcaption {
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#portfolioPicture img {
+    padding: 0.2rem;
+    border: 5px solid yellowgreen;
+}
+
+#portfolioPicture img, #portfolioPicture figcaption {
+    width: 50%;
+    display: block;
+    margin: auto;
+    margin-right: 20%;
+}
+
+#portfolioLanding section {
+    flex: 1 1;
+}
+
+/* footer with social media buttons styling */
+
+#contact_me {
+    margin-left: 10%;
+    margin-bottom: 1.5rem;
+    color: whitesmoke;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social_button {
+    background-color: rgba(128, 128, 128, 0.25);
+
+    border-radius: 50%;
+    border: 2px solid gray;
+    width: 5rem;
+    height: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social_button:hover {
+    background-color: rgba(128, 128, 128, 0.7);
+    box-shadow: 12px 12px 25px 0 rgba(0, 0, 0, 0.5);
+}
+
+.social_button:active {
+    
+}
+
+.social_button img {
+    margin: auto;
+    width: 50%;
+}

@@ -1,0 +1,43 @@
+/* Navigation styling */
+
+nav {
+    background-color: rgb(255, 153, 0);
+    border-bottom: 4px solid rgb(105, 66, 27);
+
+    position: sticky;
+    top: 0;
+    opacity: 80%;
+
+    display: flex;
+    align-items: center;
+}
+
+nav #logo {
+    display: inline;
+    width: 5rem;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    padding: 1.5rem 1rem;
+
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav li a:link, nav li a:visited {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: rgb(51, 14, 0);
+}

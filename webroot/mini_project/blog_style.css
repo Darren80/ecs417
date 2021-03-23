@@ -1,0 +1,47 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.vertical_bar {
+    border-left: 3px solid rgba(128, 128, 128, 0.678);
+}
+
+#container #main {
+    float: left;
+    width: 70%;
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+#container #sidebar {
+    float: right;
+    width: 30%;
+
+    height: 100vh;
+}
+
+#main .title {
+    font-family: 'Pacifico', cursive;
+}
+
+/* Sidebar: Login form */
+
+#login_form {
+    margin: 1rem;
+}
+
+#login_form div {
+    margin-bottom: 1rem;
+}
+
+#login_form div:not(:last-of-type) {
+    display: flex;
+    justify-content: space-between;
+}
+
+#login_form input#password, #login_form input#username {
+    width: 70%;
+}

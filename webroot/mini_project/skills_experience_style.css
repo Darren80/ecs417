@@ -1,0 +1,162 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.horizontal_bar {
+    border-bottom: thick solid rgba(0, 0, 0, 0.75);
+    max-width: 30%;
+}
+
+/* .horizontal_bar2 {
+    border-bottom: thick solid rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 5.5rem;
+    width: 100%;
+} */
+
+.title {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* * * * * * * * * * * *
+Experience scroll box 
+ * * * * * * * * * * * */
+
+#experience_flex {
+    width: 90%;
+    display: flex;
+    overflow-x: auto;
+
+    padding: 1rem;
+    background-color: lightblue;
+}
+
+/* Figure styles */
+
+#experience_flex .box figure {
+    display: flex;
+    justify-content: space-evenly;
+
+    margin-bottom: 1rem;
+}
+
+#experience_flex .box figure figcaption {
+    font-weight: bold;
+}
+
+#experience_flex .box figure img {
+    width: 20%;
+}
+
+/* End of figure styles */
+
+#experience_flex::after {
+    content: '';
+    flex: 0 0 1rem;
+}
+
+#experience_flex .box {
+    flex: 0 0 30%;
+
+    background-color: aqua;
+    padding: 1rem;
+}
+
+#experience_flex .box:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
+/* Skills section */
+
+#skills_flex {
+    display: flex;
+    position: relative;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding-top: 15rem;
+    padding-bottom: 2rem;
+}
+
+.skills p.skill_text {
+    width: 100%;
+    text-align: center;
+
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.skills.frontend {
+    background-color: yellow;
+}
+.skills.backend {
+    background-color: orange;
+}
+
+.skill {
+    width: 7rem;
+    height: 7rem;
+    margin: 0 1rem;
+
+    background-color: #c2883d9a;
+    border: 0.5rem solid #c2883d;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.skill progress {
+    width: 10rem;
+    height: 2rem;
+
+    -webkit-appearance: none;
+
+    position: absolute;
+    transform: rotate(-90deg);
+    top: -6rem;
+}
+
+.skill progress::-webkit-progress-bar {
+    border-radius: 0.5rem;
+    background-color: wheat;
+}
+
+.skill progress::-webkit-progress-value {
+    border-radius: 0.5rem;
+    background-color: #c2883d;
+}
+
+.skill p {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Education section */
+
+#education {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#education .box {
+    flex: 0 0 40%;
+    background-color: darkcyan;
+
+    padding: 2rem;
+    margin: 1rem;
+}
