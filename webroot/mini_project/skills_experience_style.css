@@ -16,8 +16,11 @@ body {
 /* .horizontal_bar2 {
     border-bottom: thick solid rgba(0, 0, 0, 0.75);
     position: absolute;
-    top: 5.5rem;
-    width: 100%;
+
+    width: 80rem;
+    top: 5rem;
+
+    z-index: 1;
 } */
 
 .title {
@@ -87,6 +90,8 @@ Experience scroll box
 
     padding-top: 15rem;
     padding-bottom: 2rem;
+
+    position: relative;
 }
 
 .skills p.skill_text {

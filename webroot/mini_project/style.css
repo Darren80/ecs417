@@ -9,13 +9,21 @@ body {
     margin: auto;
 }
 
-#backgroundImage {
-    background: url(img/pexels-stephan-seeber-1054218.jpg) no-repeat;
+/* #backgroundImage {
+    background: url(img/pexels-stephan-seeber-1054218.jpg) no-repeat center center;
     background-size: cover;
     width: 100vw;
-    height: 100vh;
+    height: 150vh;
 
     position: absolute;
+    z-index: -1;
+} */
+
+html {
+    background: url(img/pexels-stephan-seeber-1054218.jpg) no-repeat center center fixed;
+    background-size: cover;
+
+    /* position: absolute; */
     z-index: -1;
 }
 
@@ -28,15 +36,24 @@ body {
     display: flex;
 }
 
-#portfolioLanding section .title {
+#portfolioDescription .title {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
     margin-bottom: 1rem;
+
+    position: relative;
+    bottom: 1rem;
+    right: 3rem;
 }
 
-#portfolioLanding section p {
-    
+#portfolioDescription {
+    flex: 1 1;
     margin-right: 10%;
+
+}
+
+#portfolioDescription p {
+
 }
 
 #portfolioPicture {
@@ -59,14 +76,15 @@ body {
     width: 50%;
     display: block;
     margin: auto;
-    margin-right: 20%;
 }
 
-#portfolioLanding section {
-    flex: 1 1;
-}
+
 
 /* footer with social media buttons styling */
+
+footer {
+    margin: 2rem 0;
+}
 
 #contact_me {
     margin-left: 10%;
