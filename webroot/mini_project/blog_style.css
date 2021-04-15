@@ -12,19 +12,41 @@ body {
 
 #container #main {
     width: 70%;
-
-    display: flex;
-    justify-content: center;
 }
 
 #container #sidebar {
-
     width: 30%;
     height: 100vh;
 }
 
 #main .title {
+    text-align: center;
     font-family: 'Pacifico', cursive;
+    margin: 2rem 0;
+}
+
+#main article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1rem 0;
+    border-bottom: 1px solid sandybrown;
+}
+
+#main .date_published {
+    align-self: flex-start;
+    margin-left: 10%;
+
+    font-size: 0.9rem;
+}
+
+#main .blog_title {
+    margin-bottom: 1rem;
+}
+
+#main .blog_text {
+    text-align: center;
 }
 
 /* Sidebar: Login form */

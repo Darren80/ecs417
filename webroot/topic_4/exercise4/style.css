@@ -1,0 +1,31 @@
+form {
+    width: 50%;
+    text-align: left;
+    position: relative;
+}
+
+form label {
+    display: block;
+}
+
+form #sleeveRadios label {
+    display: inline;
+}
+
+form fieldset legend {
+    background-color: green;
+    text-align: center;
+    padding: 5px 2rem;
+    color: white;
+    position: sticky;
+    top: 10px;
+}
+
+form fieldset {
+    background-color: greenyellow;
+    margin: 1rem 0;
+}
+
+form fieldset>fieldset {
+    border: 3px solid green;
+}
