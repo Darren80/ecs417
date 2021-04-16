@@ -63,15 +63,21 @@
                 //echo "Database connection successful.";
             }
 
-            $sql = "SELECT * FROM `blog`";
+            $sql = "SELECT * FROM `BLOG`";
             $result = $conn->query($sql);
 
             //MULTIDIMENSIONAL ARRAY SORTING
-            function sortByDate($rows)
+            function sortByDate($rows, $reverse)
             {
-                usort($rows, function ($a, $b) {
-                    return $a['date_published'] <=> $b['date_published'];
-                });
+                if ($reverse) {
+                    usort($rows, function ($a, $b) {
+                        return $a['date_published'] <=> $b['date_published'];
+                    });
+                } else {
+                    usort($rows, function ($a, $b) {
+                    return $b['date_published'] <=> $a['date_published'];
+                    });
+                }
                 return $rows;
             }
 
@@ -83,7 +89,11 @@
                     $rows[] = $row;
                 }
 
-                $rows = sortByDate($rows); //SORT POSTS BY SOMETHING (LIKE DATE)
+                $reverse = true;
+                if (isset($$_GET['sort'])) {
+                    $reverse = $_GET['sort'] == "newest" ? true : false;
+                }
+                $rows = sortByDate($rows, $reverse); //SORT POSTS BY SOMETHING (LIKE DATE)
 
                 foreach ($rows as &$row) {
                     $title = $row["blog_title"];

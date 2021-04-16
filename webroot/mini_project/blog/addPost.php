@@ -26,7 +26,7 @@
     $authors = $_POST['authors'];
 
 
-    $sql = "INSERT INTO `blog` (`blog_title`, `blog_text`, `date_published`, `authors`) VALUES ('$title', '$text', '$date', '$authors')";
+    $sql = "INSERT INTO `BLOG` (`blog_title`, `blog_text`, `date_published`, `authors`) VALUES ('$title', '$text', '$date', '$authors')";
     $result = $conn->query($sql);
 
     if ($result) {
