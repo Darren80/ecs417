@@ -22,7 +22,7 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM `USERS` WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM `USERS` WHERE BINARY username='$username' AND BINARY password='$password'";
     $result = $conn->query($sql);
 
     if($result -> num_rows > 0) {
@@ -39,9 +39,8 @@
     }
 
     if (isset($_SESSION["username"])) { ?>
-        <a>Add Post</a>
+        
 <?php    } else { ?>
-        <a>Login</a>
-        <a>Sign up</a>
+            <h2>Sorry, your username or password was incorrect please try again.</h2>
 <?php    } ?>
     

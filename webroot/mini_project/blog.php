@@ -23,32 +23,73 @@
                 <li><a href="skills_experience.html#flex_experience">Skills and Experience</a></li>
                 <li><a href="skills_experience.html#education">Qualifications and Education</a></li>
                 <li><a href="">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.php">Blog</a></li>
 
             </ul>
         </nav>
     </header>
+
+    <?php
+        session_start();
+    ?>
 
     <div id="container">
         <div id="main">
 
             <h1 class="title">Entries</h1>
             <form>
+                <?php
+                    if (!empty($_GET['sort_select'])) {
+                        $_SESSION['sort_select'] = $_GET['sort_select']; 
+                    } else {
+                        $_SESSION['sort_select'] = "newest";
+                    }
+                ?>
                 <label for="sort_select">Sort by:</label>
                 <select id="sort_select">
-                    <optgroup label="By date">
-                        <option>Newest First</option>
-                        <option>Oldest First</option>
+                    <optgroup label="Date">
+                        <option <?php $_SESSION['sort_select'] == "newest" ? print("selected") : ""; ?>>Newest First</option>
+                        <option <?php $_SESSION['sort_select'] == "oldest" ? print("selected") : ""; ?>>Oldest First</option>
                     </optgroup>
                 </select>
+            
+                <?php
+                    if (!empty($_GET['month'])) {
+                        $_SESSION['filter_select'] = $_GET['month'];
+                    } else {
+                        $_SESSION['filter_select'] ="";
+                    }
+
+                ?>
+                <label for="filter_select">Filter by:</label>
+                <select id="filter_select">
+                    <optgroup>
+                        <option>None</option>
+                    </optgroup>
+                    <optgroup label="Month">
+                        <option <?php $_SESSION['filter_select'] == "1" ? print("selected") : ""; ?>>January</option>
+                        <option <?php $_SESSION['filter_select'] == "2" ? print("selected") : ""; ?>>February</option>
+                        <option <?php $_SESSION['filter_select'] == "3" ? print("selected") : ""; ?>>March</option>
+                        <option <?php $_SESSION['filter_select'] == "4" ? print("selected") : ""; ?>>April</option>
+                        <option <?php $_SESSION['filter_select'] == "5" ? print("selected") : ""; ?>>May</option>
+                        <option <?php $_SESSION['filter_select'] == "6" ? print("selected") : ""; ?>>June</option>
+                        <option <?php $_SESSION['filter_select'] == "7" ? print("selected") : ""; ?>>July</option>
+                        <option <?php $_SESSION['filter_select'] == "8" ? print("selected") : ""; ?>>August</option>
+                        <option <?php $_SESSION['filter_select'] == "9" ? print("selected") : ""; ?>>September</option>
+                        <option <?php $_SESSION['filter_select'] == "10" ? print("selected") : ""; ?>>October</option>
+                        <option <?php $_SESSION['filter_select'] == "11" ? print("selected") : ""; ?>>November</option>
+                        <option <?php $_SESSION['filter_select'] == "12" ? print("selected") : ""; ?>>December</option>
+                    </optgroup>
+                </select>
+                <button type="submit" id="sort_filter_submit">Go</button>
             </form>
 
             <?php
             $dbhost = getenv("MYSQL_SERVICE_HOST");
             $dbport = getenv("MYSQL_SERVICE_PORT");
-            // $dbuser = "root";
-            // $dbpwd = "";
-            // $dbname = "app_data";
+            //  $dbuser = "root";
+            //  $dbpwd = "";
+            //  $dbname = "app_data";
             $dbuser = getenv("DATABASE_USER");
             $dbpwd = getenv("DATABASE_PASSWORD");
             $dbname = getenv("DATABASE_NAME");
@@ -67,20 +108,28 @@
             $result = $conn->query($sql);
 
             //MULTIDIMENSIONAL ARRAY SORTING
-            function sortByDate($rows, $reverse)
+            function sortByDate($rows, $order)
             {
-                if ($reverse) {
+                if ($order == "newest") {
                     usort($rows, function ($a, $b) {
-                        return $a['date_published'] <=> $b['date_published'];
+                        return $b['date_published'] <=> $a['date_published'];
                     });
-                } else {
+                } else if ($order == "oldest") {
                     usort($rows, function ($a, $b) {
-                    return $b['date_published'] <=> $a['date_published'];
+                    return $a['date_published'] <=> $b['date_published'];
                     });
                 }
                 return $rows;
             }
 
+            if (isset($_SESSION['filter_select']) && !empty($_SESSION['filter_select'])) {
+                $month = $_SESSION['filter_select'];
+                $sql = "SELECT * FROM `BLOG` WHERE MONTH(`date_published`) = $month";
+            }           
+
+            $result = $conn->query($sql);
+
+            //IS THERE AT LEAST ONE FIELD IN THE `BLOG` TABLE?
             if ($result->num_rows > 0) {
 
                 $rows = [];
@@ -89,11 +138,8 @@
                     $rows[] = $row;
                 }
 
-                $reverse = true;
-                if (isset($$_GET['sort'])) {
-                    $reverse = $_GET['sort'] == "newest" ? true : false;
-                }
-                $rows = sortByDate($rows, $reverse); //SORT POSTS BY SOMETHING (LIKE DATE)
+                $order = $_SESSION['sort_select'];
+                $rows = sortByDate($rows, $order); //SORT POSTS BY SOMETHING (LIKE DATE)
 
                 foreach ($rows as &$row) {
                     $title = $row["blog_title"];
@@ -108,6 +154,8 @@
                     print("</article>");
                     print("<br>");
                 }
+            } else {
+                print("<h1>There are no entries for this time-period.");
             }
 
             $conn->close();
@@ -138,8 +186,6 @@
             </form>
 
             <?php
-            session_start();
-
             if (isset($_SESSION['user_status'])) {
                 $name = $_SESSION['name'];
                 print("<p id=\"login_message\">Welcome back, $name</p>");
